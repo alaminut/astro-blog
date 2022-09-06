@@ -4,7 +4,7 @@ import { DEFAULT_PAGE_TITLE } from 'src/constants';
 
 <header>
   <div class="brand">
-    <a href="/">
+    <a class="brandLink" href="/">
       {DEFAULT_PAGE_TITLE}
     </a>
   </div>
@@ -13,25 +13,27 @@ import { DEFAULT_PAGE_TITLE } from 'src/constants';
 <style>
   header {
     grid-area: header;
-    background: hotpink;
+    background: #9b59b6;
     color: white;
     min-height: 80px;
     padding: 0 24px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
+
   .brand {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     height: 100%;
     font-weight: 900;
     font-size: 24px;
   }
 
-  .brand a:link,
-  a:visited,
-  a:active {
+  .brandLink,
+  .brandLink:hover {
     color: white;
     text-decoration: none;
+    letter-spacing: 0.05em;
   }
 </style>

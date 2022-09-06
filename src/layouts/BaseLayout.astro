@@ -2,6 +2,7 @@
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import { DEFAULT_PAGE_TITLE } from 'src/constants';
+import 'src/global.css';
 
 const { title } = Astro.props.frontmatter || Astro.props;
 ---
@@ -29,34 +30,20 @@ const { title } = Astro.props.frontmatter || Astro.props;
       </main>
       <Footer />
     </section>
-    <style is:global>
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        -webkit-font-smoothing: antialiased;
-      }
-    </style>
-
     <style>
+      main {
+        grid-area: content;
+        max-width: 1440px;
+        padding: 0 24px;
+        justify-self: center;
+      }
+
       .mainGrid {
         display: grid;
         gap: 48px;
         grid-template-areas: 'header' 'content' 'footer';
         grid-template-rows: min-content auto min-content;
         height: 100%;
-      }
-      main {
-        grid-area: content;
-        max-width: 1440px;
-        padding: 0 24px;
-        justify-self: center;
       }
     </style>
   </body>

@@ -16,15 +16,17 @@ const content = viewSummary
 
 <article class={viewSummary ? 'summary' : ''}>
   <h1>{article.data.title}</h1>
-  <div set:html={asHTML(content as RichTextField)}></div>
-  {viewSummary && <a href={`/posts/${article.uid}`}>Read more</a>}
+  <div class="content" set:html={asHTML(content as RichTextField)}></div>
+  {
+    viewSummary && (
+      <a class="readMoreLink" href={`/posts/${article.uid}`}>
+        Read more
+      </a>
+    )
+  }
 </article>
 
 <style>
-  * {
-    color: #2c3e50;
-  }
-
   article {
     max-width: 80ch;
     margin: 48px 0;
@@ -36,7 +38,11 @@ const content = viewSummary
     margin: 0 0 3rem 0;
   }
 
-  a {
+  .content {
+    line-height: 1.6em;
+  }
+
+  .readMoreLink {
     display: inline-block;
     margin: 1.5rem 0 0 0;
   }
