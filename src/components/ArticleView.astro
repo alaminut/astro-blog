@@ -1,0 +1,51 @@
+---
+import { asHTML } from '@prismicio/helpers';
+import type { PrismicDocument, RichTextField } from '@prismicio/types';
+import type { BlogPost } from 'src/prismic/types';
+
+export interface Props {
+  article: PrismicDocument<BlogPost>;
+  viewSummary?: boolean;
+}
+
+const { article, viewSummary = false } = Astro.props;
+const content = viewSummary
+  ? article.data.content.filter(f => f.type === 'paragraph').slice(0, 2)
+  : article.data.content;
+---
+
+<article class={viewSummary ? 'summary' : ''}>
+  <h1>{article.data.title}</h1>
+  <div set:html={asHTML(content as RichTextField)}></div>
+  {viewSummary && <a href={`/posts/${article.uid}`}>Read more</a>}
+</article>
+
+<style>
+  * {
+    color: #2c3e50;
+  }
+
+  article {
+    max-width: 80ch;
+    margin: 48px 0;
+  }
+
+  h1 {
+    font-size: 3rem;
+    padding: 0;
+    margin: 0 0 3rem 0;
+  }
+
+  a {
+    display: inline-block;
+    margin: 1.5rem 0 0 0;
+  }
+
+  .summary {
+    margin: 48px 0 120px 0;
+  }
+
+  .summary h1 {
+    margin: 0 0 1.5rem 0;
+  }
+</style>

@@ -1,0 +1,13 @@
+---
+import ArticleView from '@components/ArticleView.astro';
+import Layout from '@layouts/BaseLayout.astro';
+import type { PrismicDocument } from '@prismicio/types';
+import client from 'src/prismic/client';
+import type { BlogPost } from 'src/prismic/types';
+
+const posts = await client.getAllByType<PrismicDocument<BlogPost>>('blog_post');
+---
+
+<Layout>
+  {posts.map(post => <ArticleView article={post} viewSummary />)}
+</Layout>

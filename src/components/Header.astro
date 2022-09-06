@@ -1,0 +1,37 @@
+---
+import { DEFAULT_PAGE_TITLE } from 'src/constants';
+---
+
+<header>
+  <div class="brand">
+    <a href="/">
+      {DEFAULT_PAGE_TITLE}
+    </a>
+  </div>
+</header>
+
+<style>
+  header {
+    grid-area: header;
+    background: hotpink;
+    color: white;
+    min-height: 80px;
+    padding: 0 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    font-weight: 900;
+    font-size: 24px;
+  }
+
+  .brand a:link,
+  a:visited,
+  a:active {
+    color: white;
+    text-decoration: none;
+  }
+</style>

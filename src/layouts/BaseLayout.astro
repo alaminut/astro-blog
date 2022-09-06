@@ -1,0 +1,63 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import { DEFAULT_PAGE_TITLE } from 'src/constants';
+
+const { title } = Astro.props.frontmatter || Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ? `${DEFAULT_PAGE_TITLE} - ${title}` : DEFAULT_PAGE_TITLE}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="mainGrid">
+      <Header />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </section>
+    <style is:global>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+
+    <style>
+      .mainGrid {
+        display: grid;
+        gap: 48px;
+        grid-template-areas: 'header' 'content' 'footer';
+        grid-template-rows: min-content auto min-content;
+        height: 100%;
+      }
+      main {
+        grid-area: content;
+        max-width: 1440px;
+        padding: 0 24px;
+        justify-self: center;
+      }
+    </style>
+  </body>
+</html>
