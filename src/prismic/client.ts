@@ -1,4 +1,4 @@
-import { createClient, getRepositoryEndpoint } from "@prismicio/client"
+import { createClient, getRepositoryEndpoint } from '@prismicio/client';
 
 const repoName = import.meta.env.PRISMIC_REPO_NAME;
 const contentApiEndpoint = getRepositoryEndpoint(repoName);
