@@ -1,8 +1,8 @@
 ---
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import GlobalStyles from '@layouts/GlobalStyles.astro';
 import { DEFAULT_PAGE_TITLE } from 'src/constants';
-import 'src/global.css';
 
 const { title } = Astro.props.frontmatter || Astro.props;
 ---
@@ -21,6 +21,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;700&family=Roboto:wght@400;900&display=swap"
       rel="stylesheet"
     />
+    <GlobalStyles />
   </head>
   <body>
     <section class="mainGrid">
